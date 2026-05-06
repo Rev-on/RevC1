@@ -6,7 +6,7 @@ project:
   description:  "5x5 Tile RISC-V MCU with UART, I2C, GPIO, PWM"  # 一句话描述
   language:     "Verilog"         # 硬件描述语言
   clock_hz:     40000000          # 40MHz 时钟频率
-  tiles:        "5x5"             # 占用5x5个Tile
+  tiles:        "3x4"             # 占用5x5个Tile
   custom_gds:   true              # 【关键】使用你自己的GDS文件
   top_module:   "tt_um_rev_core"  # 顶层模块名（必须和.v文件中的module名一致）
 
