@@ -9,7 +9,7 @@ project:
   custom_gds:   true
   top_module:   "tt_um_rev_core"
   source_files: 
-    - "src/tt_um_rev_core.v"          # 至少填这一个
+    - "*.v"          # 至少填这一个
 
 # 引脚定义保持不变...
 pinout:
