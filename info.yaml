@@ -1,45 +1,47 @@
 # Tiny Tapeout project information
 project:
-  title:        "RevC1"
-  author:       "Rev.on"
-  discord:      ""
-  description:  "RevC1 RISC-V core with UART, I2C, PWM, GPIO"
-  language:     "Verilog"
-  clock_hz:     40000000
-  tiles:        "5x5"
-  custom_gds:   true
-  top_module:   "tt_um_rev_core"
+  title:        "RevC1"           # 项目标题
+  author:       "Rev.on"          # 你的名字
+  discord:      ""                # Discord用户名（可选）
+  description:  "5x5 Tile RISC-V MCU with UART, I2C, GPIO, PWM"  # 一句话描述
+  language:     "Verilog"         # 硬件描述语言
+  clock_hz:     40000000          # 40MHz 时钟频率
+  tiles:        "5x5"             # 占用5x5个Tile
+  custom_gds:   true              # 【关键】使用你自己的GDS文件
+  top_module:   "tt_um_rev_core"  # 顶层模块名（必须和.v文件中的module名一致）
 
-# 【修改】根据顶层模块实际连接来定义
+# 引脚定义 - 根据你的 tt_um_rev_core.v 中的连接来定义
+# 每个引脚用简短描述（3-4个词）
 pinout:
-  # 输入引脚 ui_in (8个)
-  ui[0]: "uart_rx"              # RISC-V UART接收输入
-  ui[1]: ""                    
-  ui[2]: ""                    
-  ui[3]: ""                    
-  ui[4]: ""                    
-  ui[5]: ""                    
-  ui[6]: ""                    
-  ui[7]: ""                    
+  # 输入引脚 ui_in[0]..ui_in[7] → 连接到 u_cpu.uart_rx
+  ui[0]: "uart rx input"          # UART接收
+  ui[1]: ""                       # 未使用
+  ui[2]: ""                       # 未使用
+  ui[3]: ""                       # 未使用
+  ui[4]: ""                       # 未使用
+  ui[5]: ""                       # 未使用
+  ui[6]: ""                       # 未使用
+  ui[7]: ""                       # 未使用
 
-  # 输出引脚 uo_out (8个)
-  uo[0]: "uart_tx"              # UART发送输出
-  uo[1]: "pwm_out"              # PWM输出  
-  uo[2]: "debug_sel[0]"         # 调试选择位0
-  uo[3]: "debug_sel[1]"         # 调试选择位1
-  uo[4]: "debug_sel[2]"         # 调试选择位2
-  uo[5]: "debug_data"           # 调试数据输出
-  uo[6]: ""                     
-  uo[7]: ""                     
+  # 输出引脚 uo_out[0]..uo_out[7]
+  uo[0]: "uart tx output"         # UART发送
+  uo[1]: "pwm output"             # PWM输出
+  uo[2]: "debug sel bit0"         # 调试选择位0
+  uo[3]: "debug sel bit1"         # 调试选择位1
+  uo[4]: "debug sel bit2"         # 调试选择位2
+  uo[5]: "debug data"             # 调试数据
+  uo[6]: ""                       # 未使用
+  uo[7]: ""                       # 未使用
 
-  # 双向引脚 uio (使用 uio_in, uio_out, uio_oe)
-  uio[0]: "gpio[0]"             # GPIO 0
-  uio[1]: "gpio[1] / i2c_scl"   # GPIO 1 或 I2C时钟
-  uio[2]: "gpio[2] / i2c_sda"   # GPIO 2 或 I2C数据
-  uio[3]: "gpio[3]"             # GPIO 3
-  uio[4]: "gpio[4]"             # GPIO 4
-  uio[5]: "gpio[5]"             # GPIO 5
-  uio[6]: "gpio[6]"             # GPIO 6
-  uio[7]: "gpio[7]"             # GPIO 7
+  # 双向引脚 uio[0]..uio[7] → 连接到 cpu_core 的 gpio_pins
+  uio[0]: "gpio pin 0"            # GPIO 0
+  uio[1]: "gpio pin 1 / i2c scl"  # GPIO 1 或 I2C时钟
+  uio[2]: "gpio pin 2 / i2c sda"  # GPIO 2 或 I2C数据
+  uio[3]: "gpio pin 3"            # GPIO 3
+  uio[4]: "gpio pin 4"            # GPIO 4
+  uio[5]: "gpio pin 5"            # GPIO 5
+  uio[6]: "gpio pin 6"            # GPIO 6
+  uio[7]: "gpio pin 7"            # GPIO 7
 
+# 不要修改这个版本号
 yaml_version: 6
