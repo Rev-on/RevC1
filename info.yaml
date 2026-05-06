@@ -9,6 +9,7 @@ project:
   tiles:        "4x4"             # 占用5x5个Tile
   custom_gds:   true              # 【关键】使用你自己的GDS文件
   top_module:   "tt_um_rev_core"  # 顶层模块名（必须和.v文件中的module名一致）
+  source_files: []    
 
 # 引脚定义 - 根据你的 tt_um_rev_core.v 中的连接来定义
 # 每个引脚用简短描述（3-4个词）
