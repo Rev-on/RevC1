@@ -1,19 +1,13 @@
 name: gds
 
-on:
-  push:
-  pull_request:
-  workflow_dispatch:
+on: [push]
 
 jobs:
-  build:
+  gds:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Build submission
-        uses: TinyTapeout/tt-gds-action@v3
-        with:
-          input_dir: .
+      - name: Run Tiny Tapeout GDS action
+        uses: TinyTapeout/tt-gds-action@main
