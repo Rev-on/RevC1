@@ -1,61 +1,45 @@
 # Tiny Tapeout project information
 project:
-  title:        "RevC1"      # Project title
-  author:       "Rev.on"      # Your name
-  discord:      ""      # Your discord username (optional)
-  description:  "Rev.on's first MCU - a compact RISC-V core"      # One line description
-  language:     "Verilog"     # 改回 Verilog，custom 可能会报错
+  title:        "RevC1"
+  author:       "Rev.on"
+  discord:      ""
+  description:  "RevC1 RISC-V core with UART, I2C, PWM, GPIO"
+  language:     "Verilog"
+  clock_hz:     40000000
+  tiles:        "5x5"
+  custom_gds:   true
+  top_module:   "tt_um_rev_core"
 
-  clock_hz:     40000000       # Clock frequency in Hz
-
-  # How many tiles your design occupies?
-  tiles: "5x5"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
-
-  # 【关键】因为你已经有 GDS，必须设置为 true
-  # 这样 GitHub Actions 会跳过自动布局布线，直接使用你提供的 GDS 文件
-  custom_gds: true
-
-  # 【关键】你的顶层模块名必须以 tt_um_ 开头
-  # 你写的是 "tt_um_rev_core"，这个没问题，但必须和你的 GDS 文件名中的顶层模块名完全一致
-  top_module: "tt_um_rev_core"
-
-  # 【关键】因为你用了 custom_gds: true，source_files 必须留空或注释掉！
-  # 不需要在这里列任何 Verilog 文件，因为你是直接提供版图
-  # source_files: []
-  # 或者直接不写这个字段
-
-# The pinout of your project. DO NOT delete or add any pins.
-# 注意：Tiny Tapeout 官方要求的是这种格式，不是你之前写的那种 [["clk", "input"]] 格式
+# 【修改】根据顶层模块实际连接来定义
 pinout:
-  # Inputs (8个)
-  ui[0]: "clk"
-  ui[1]: "rst_n"
-  ui[2]: "ena"
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  # 输入引脚 ui_in (8个)
+  ui[0]: "uart_rx"              # RISC-V UART接收输入
+  ui[1]: ""                    
+  ui[2]: ""                    
+  ui[3]: ""                    
+  ui[4]: ""                    
+  ui[5]: ""                    
+  ui[6]: ""                    
+  ui[7]: ""                    
 
-  # Outputs (8个)
-  uo[0]: "status_0"
-  uo[1]: "status_1"
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  # 输出引脚 uo_out (8个)
+  uo[0]: "uart_tx"              # UART发送输出
+  uo[1]: "pwm_out"              # PWM输出  
+  uo[2]: "debug_sel[0]"         # 调试选择位0
+  uo[3]: "debug_sel[1]"         # 调试选择位1
+  uo[4]: "debug_sel[2]"         # 调试选择位2
+  uo[5]: "debug_data"           # 调试数据输出
+  uo[6]: ""                     
+  uo[7]: ""                     
 
-  # Bidirectional pins (8个) - 如果没用就留空
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  # 双向引脚 uio (使用 uio_in, uio_out, uio_oe)
+  uio[0]: "gpio[0]"             # GPIO 0
+  uio[1]: "gpio[1] / i2c_scl"   # GPIO 1 或 I2C时钟
+  uio[2]: "gpio[2] / i2c_sda"   # GPIO 2 或 I2C数据
+  uio[3]: "gpio[3]"             # GPIO 3
+  uio[4]: "gpio[4]"             # GPIO 4
+  uio[5]: "gpio[5]"             # GPIO 5
+  uio[6]: "gpio[6]"             # GPIO 6
+  uio[7]: "gpio[7]"             # GPIO 7
 
-# Do not change!
 yaml_version: 6
