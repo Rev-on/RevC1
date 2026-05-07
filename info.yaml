@@ -9,7 +9,29 @@ project:
   custom_gds:   true
   top_module:   "tt_um_rev_core"
   source_files: 
-    - "*.v"          # 至少填这一个
+  - "src/a_o_b32.v"
+  - "src/ahb_arbiter.v"
+  - "src/ahb_bus.v"
+  - "src/ahb_decoder.v"
+  - "src/ahb_master_mux.v"
+  - "src/alu32.v"
+  - "src/control.v"
+  - "src/cpu_core.v"
+  - "src/cpu_to_ahb.v"
+  - "src/imm_gen.v"
+  - "src/inst_mem.v"
+  - "src/mux32.v"
+  - "src/pc.v"
+  - "src/reg32.v"
+  - "src/register.v"
+  - "src/riscv_cpu.v"
+  - "src/rv_gpio.v"
+  - "src/rv_i2c_master.v"
+  - "src/rv_timer.v"
+  - "src/rv_uart.v"
+  - "src/rv_uart_rx.v"
+  - "src/rv_uart_tx.v"
+  - "src/tt_um_rev_core.v"   
 
 # 引脚定义保持不变...
 pinout:
