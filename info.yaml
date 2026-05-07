@@ -5,7 +5,7 @@ project:
   description:  "RISC-V MCU with UART, I2C, GPIO, PWM"
   language:     "Verilog"
   clock_hz:     40000000
-  tiles:        "4x3"
+  tiles:        "3x4"
   custom_gds:   true
   top_module:   "tt_um_rev_core"
   source_files: 
